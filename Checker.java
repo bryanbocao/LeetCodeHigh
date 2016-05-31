@@ -1,3 +1,4 @@
+// java Comparator, Hackerrank
 class Checker implements Comparator<Player> {
     @Override
     public int compare(Player a, Player b) {
