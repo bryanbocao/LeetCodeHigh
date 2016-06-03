@@ -11,7 +11,7 @@ Minimize the total number of operations.
  */
 
 package algorithms.num283_MoveZeroes;
-public class Solution20160602Thu {
+public class SolutionNotPassed20160602Thu {
     public void moveZeroes(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
         	if (nums[i] == 0 && i + 1 <= nums.length - 1) {
@@ -30,19 +30,18 @@ public class Solution20160602Thu {
         }
     }
 }
-//
 /*
 20160602Thu16:16 duration: 24m16s34 @BryanBo-Cao not passed
 Run Code Result: ×
 Your input
-
 [0,1,0,3,12]
+
 Your answer
-
 [0,1,0,3,12]
-Expected answer
 
+Expected answer
 [1,3,12,0,0]
+
 Runtime: 0 ms
 */
 
