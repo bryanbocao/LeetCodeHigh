@@ -1,4 +1,4 @@
-package algorithms.num171ExcelSheetColumnNumber;
+package algorithms.num171_ExcelSheetColumnNumber;
 
 public class Test {
 

@@ -15,7 +15,7 @@ For example:
     AA -> 27
     AB -> 28 
  */
-package algorithms.num171ExcelSheetColumnNumber;
+package algorithms.num171_ExcelSheetColumnNumber;
 
 public class Solution {
     public int titleToNumber(String s) {
