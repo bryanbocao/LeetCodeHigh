@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package leetcode2;
 
 /**
  *
  * @author dingwen
- * Longest Increasing Subsequence
- * DP O(n*n) solution, easy to understand 
+ * 300. Longest Increasing Subsequence
+ * 
  */
 public class LIS {
 //{3,3,3,4,7,8,1,2,3,4} {2,2}
@@ -19,6 +14,11 @@ public class LIS {
         System.out.println(lis.lengthOfLIS(nums));
     }
 
+/**
+ * DP O(n*n) solution, easy to understand 
+ * @param nums
+ * @return 
+ */
     public int lengthOfLIS(int[] nums) {
         int length = nums.length;
         int[] lisat = new int[length];
@@ -50,5 +50,24 @@ public class LIS {
             }
             t--;
         }
+    }
+    
+    /**DP O(nlgn) solution
+     *  dp[i] is the minimum value a subsequence of length i+1 might end with
+     * @param nums
+     * @return 
+     */
+     public int lengthOfLIS_faster(int[] nums) {            
+        int[] dp = new int[nums.length];
+        int len = 0;
+
+        for(int x : nums) {
+            int i = Arrays.binarySearch(dp, 0, len, x);
+            if(i < 0) i = -(i + 1);
+            dp[i] = x;
+            if(i == len) len++;
+        }
+
+        return len;
     }
 }
