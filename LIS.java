@@ -4,7 +4,7 @@ package leetcode2;
  *
  * @author dingwen
  * 300. Longest Increasing Subsequence
- * 
+ * Two different DP solutions
  */
 public class LIS {
 //{3,3,3,4,7,8,1,2,3,4} {2,2}
