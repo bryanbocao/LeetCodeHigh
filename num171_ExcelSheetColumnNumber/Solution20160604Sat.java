@@ -1,6 +1,5 @@
 /**
- *171. Excel Sheet Column Number My Su
-bmissions QuestionEditorial Solution
+ *171. Excel Sheet Column Number My Submissions QuestionEditorial Solution
 Total Accepted: 82162 Total Submissions: 194377 Difficulty: Easy
 Related to question Excel Sheet Column Title
 
@@ -18,17 +17,18 @@ For example:
  */
 package algorithms.num171_ExcelSheetColumnNumber;
 
-public class Solution {
+public class Solution20160604Sat {
     public int titleToNumber(String s) {
         char[] cs = s.toCharArray();
         int num = 0;
         for (int i = cs.length - 1; i >= 0; i--) {
-        	int d = (int) cs[i] - 64;
-        	int pw = cs.length - i - 1, dv = 1;
-        	if (pw > 0) for (int j = 1; j <= pw; j++) dv *= 26;
-        	num += d * dv;
+        	System.out.println((int) cs[i] - 64);
+        	System.out.println(cs.length - i - 1);
+        	System.out.println(26 ^ (cs.length - i - 1));
+        	num += ((int) cs[i] - 64) * 26 ^ (cs.length - i - 1);
+        	System.out.println();
         }
         return num;
     }
 }
-//20160609Fri11:05 duration:24m25s99 ACCEPTED @BryanBo-Cao
+//20160604Sat14:07 duration:28m15s61 Not Finished @BryanBo-Cao
