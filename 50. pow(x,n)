@@ -1,0 +1,43 @@
+// 1ms, log(n)
+public class Solution {
+    public double myPow(double x, int n) {
+     
+        return pow(x,n);
+    }
+    
+    public double pow(double x, long n) {
+       if(n == 0)
+            return 1;
+        if(n<0){
+            n = -n;
+            x = 1/x;
+        }
+        return (n%2 == 0) ? pow(x*x, n/2) : x*pow(x*x, n/2);
+    }
+}
+
+//20ms, my solution, O(n)
+public class Solution {
+    public double myPow(double x, int n) {
+        double res=1;
+        long nL = n;
+        if(nL<0) { 
+            x=1/x;
+            nL=-nL;
+        }
+        if(nL==0) return 1d;
+        
+        boolean positive = x<0?false:true;
+        //x = x<0?-x:x;
+        int lowest = (int)Math.abs(n)&1;
+        
+        positive = (lowest==1 && positive)||lowest==0;
+        
+        for(int i=0;i<nL;i++) {
+            res*=x;
+            if(Math.abs(res)<0.00001) return 0; 
+            if(Math.abs(Math.abs(res)-Math.abs(res*x))<1e-10) return positive?Math.abs(res):-Math.abs(res);
+        }
+        return res;
+    }
+}
