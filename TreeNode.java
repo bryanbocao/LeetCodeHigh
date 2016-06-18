@@ -27,7 +27,7 @@ public class TreeNode {
     }
 
     public static TreeNode treeGenerate(String[] inputList) {
-        if(inputList.length==0 || "".equals(inputList[0])) return null;
+        if(inputList.length==0 || "".equals(inputList[0]) ||inputList[0]!=null) return null;
         TreeNode root = new TreeNode(Integer.valueOf(inputList[0]));
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
