@@ -1,0 +1,40 @@
+/**
+ * 198 house Robber, DP O(n)
+ *
+ */
+public class Solution {
+    public int rob(int[] nums) {
+        if(nums.length==0) return 0;
+        if(nums.length==1) return nums[0];
+        if(nums.length==2) return Math.max(nums[0],nums[1]);
+        int[] max_rob = new int[nums.length];
+        max_rob[0]=nums[0];
+        max_rob[1]=nums[1];
+        max_rob[2]=Math.max(nums[1],nums[0]+nums[2]);
+        for(int i=3;i<nums.length;i++) {
+            max_rob[i] = Math.max(max_rob[i-1],max_rob[i-2]+nums[i]);
+            max_rob[i] = Math.max(max_rob[i],max_rob[i-3]+nums[i]);
+        }
+        
+        return max_rob[nums.length-1];
+    }
+    
+}
+
+/**Simplest solution, rob, or not rob current
+ *
+ *
+ *
+public class Solution {
+    public int rob_best(int[] nums) {
+        int rob = 0; //max monney can get if rob current house
+        int notrob = 0; //max money can get if not rob current house
+        for (int i = 0; i < nums.length; i++) {
+            int currob = notrob + nums[i]; //if rob current value, previous house must not be robbed
+            notrob = Math.max(notrob, rob); //if not rob ith house, take the max value of robbed (i-1)th house and not rob (i-1)th house
+            rob = currob;
+        }
+        return Math.max(rob, notrob);
+    }
+    
+}
