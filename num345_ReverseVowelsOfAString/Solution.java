@@ -33,4 +33,4 @@ public class Solution {
         return sb.toString();
     }
 }
-//20160620Mon16:56 duration:8m27s15 @github.com/BryanBo-Cao,hackerrank.com/BryanBoCao,linkedin.com/in/bryanbocao
+//20160620Mon16:56 duration:8m27s15 Accepted @github.com/BryanBo-Cao,hackerrank.com/BryanBoCao,linkedin.com/in/bryanbocao
