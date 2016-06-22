@@ -1,0 +1,91 @@
+
+/** 59. Spiral Matrix II
+ *  elegant solution
+ *
+ */
+public int[][] generateMatrix(int n) {
+         int[][] matrix = new int[n][n];
+        
+        int left = 0;
+        int right = n-1;
+        int top = 0;
+        int down = n-1;//vertical
+        int count = 1;
+        while (left<=right) {
+            for(int i=left;i<=right;i++) {
+                matrix[top][i]=count++;
+            }
+            top++;
+            
+            for(int j=top;j<=down;j++) {
+                matrix[j][right]=count++;
+            }
+            
+            right--;
+            for(int i=right;i>=left;i--) {//right to left
+                matrix[down][i]=count++;
+            }
+            
+            down--;
+            for(int j=down;j>=top;j--) {//down to up
+                matrix[j][left]=count++;
+            }
+            
+            left++;
+        }
+           return matrix;
+    }
+
+
+/** 
+ *  my solution
+ *
+ */
+  int[][] matrix = new int[n][n];
+        
+        int edge = n;
+        int time = 0;
+        int count = 1;
+        int j = 0;//vertical
+        int i = 0;//hirizontal
+
+        while (edge>0 && time <n) {
+            while (i < edge) {//from left to right
+                matrix[j][i++] = count++;
+                if (count == n * n+1) {
+                    return matrix;
+                }
+            }
+            i--;
+            j++;
+            while (j < edge) {//from up to down
+                matrix[j++][i] = count++;
+                if (count == n * n+1) {
+                   return matrix;
+                }
+            }
+            j--;
+            i--;
+            while (i >= time) {//from right to left
+                matrix[j][i--] = count++;
+                if (count == n * n+1) {
+                   return matrix;
+                }
+            }
+            i++;
+            j--;
+            time++;
+            
+            while (j >= time) {//from down to up
+                matrix[j--][i] = count++;
+                if (count == n * n+1) {
+                    return matrix;
+                }
+            }
+            
+            edge--;
+            i++;
+            j++;
+        }
+        
+        return matrix;
