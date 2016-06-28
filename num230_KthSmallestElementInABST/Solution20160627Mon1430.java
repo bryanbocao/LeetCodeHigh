@@ -18,48 +18,37 @@ The optimal runtime complexity is O(height of BST).
  */
 package algorithms.num230_KthSmallestElementInABST;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Stack;
 
 import javax.swing.tree.TreeNode;
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-public class Solution {
+public class Solution20160627Mon1430 {
     public int kthSmallest(TreeNode root, int k) {
     	if (root == null) return 0;
     	Stack<TreeNode> stk = new Stack<TreeNode>();
-    	TreeNode tn = root, rttn = null;
+    	TreeNode tn = root;
     	stk.push(tn);
     	do {
     		if (tn.left == null) {
-        		if (tn.right == null) {
-            		if (k-- == 1) return tn.val;
-            		stk.pop();
-            		if (rttn != null) {
-            			stk.push(rttn);
-            			rttn = null;
-            		}
-            		if (stk.isEmpty()) tn = tn.right;
-            		else tn = stk.peek();
-        		} else {
-        			rttn = tn.right;
-        			tn.right = null;
-        		}
+    			tn = stk.pop();
+    			k--;
     		} else {
-    			TreeNode tnl = tn.left;
-    			tn.left = null;
-    			stk.push(tnl);
-    			tn = tnl;
+    			tn = tn.left;
+    			stk.push(tn);
     		}
-    	} while (k >= 1);
+    		if (tn.right == null) {
+    			tn = stk.pop();
+    			k--;
+    		} else {
+    			tn = tn.right;
+    			stk.push(tn);
+    		}
+    	} while (k > 1);
     	return tn.val;
     }
 }
-//20160627Mon18:19 duration:3h15m47s78 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
+//20160627Mon14:30 duration:33s90 WrongAnswer @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
