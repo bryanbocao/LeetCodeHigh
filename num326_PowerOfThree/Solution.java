@@ -22,4 +22,4 @@ public class Solution {
         }
     }
 }
-//20160629Wed15:51 duration:18m WrongAnswer @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
+//20160629Wed15:51 duration:18m Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
