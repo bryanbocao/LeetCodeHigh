@@ -15,7 +15,7 @@ This problem can also be solved using a dynamic programming approach and some kn
 Let f(k) = count of numbers with unique digits with length equals k.
 f(1) = 10, ..., f(k) = 9 * 9 * 8 * ... (9 - k + 2) [The first factor is 9 because a number cannot start with 0].
  */
-package algorithms.num257_CountNumbersWithUniqueDigits;
+package algorithms.num357_CountNumbersWithUniqueDigits;
 
 public class Solution {
     public int countNumbersWithUniqueDigits(int n) {
