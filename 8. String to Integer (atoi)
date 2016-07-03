@@ -1,0 +1,47 @@
+public class Solution {
+    final static String MAX_INT = "2147483647";
+    final static String MIN_INT = "2147483648";
+
+    public int myAtoi(String str) {
+        boolean positive = true;
+        if (str != null && str.length() != 0) {
+            char[] s = str.toCharArray();
+            StringBuilder sb = new StringBuilder();
+
+            int i = 0;
+            
+            while (i < s.length && s[i] == ' ') {//remove front spaces
+                i++;
+            }
+
+            if (s[i] == '-') {// test sign
+                positive = false;
+                i++;
+            } else if (s[i] == '+') {
+                positive = true;
+                i++;
+            }
+
+            while (i < s.length && s[i] == '0') {//remove 0
+                i++;
+            }
+
+            while (i < s.length) {//read number
+                if (s[i] < '0' || s[i] > '9') {//once nonnumberic found, break
+                    break;
+                }
+                sb.append(s[i]);
+                i++;
+            }
+
+            if (sb.length() != 0) {
+                String res = sb.toString();
+                if (positive) {
+                    return greater(res, MAX_INT) ? Integer.valueOf(MAX_INT) : Integer.valueOf(res);
+                } else {
+                    return greater(res, MIN_INT) ? Integer.valueOf("-" + MIN_INT) : Integer.valueOf(sb.insert(0, '-').toString());
+                }
+            }
+        }
+        return 0;
+}
