@@ -38,7 +38,6 @@ public class Solution {
     	        	if (hasPathSum) return true;
     	        }
     	        if (root.right != null) {
-    	        	System.out.println(sum - root.val);
     	        	hasPathSum = hasPathSum(root.right, sum - root.val);
     	        	if (hasPathSum) return true;
     	        }
