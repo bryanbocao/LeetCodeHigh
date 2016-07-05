@@ -11,7 +11,7 @@ You may assume no duplicate exists in the array.
  */
 package algorithms.num153_FindMinimumInRotatedSortedArray;
 
-public class Solution {
+public class Solution20160615Wed1458WrongAnswer {
     public int findMin(int[] nums) {
         int len = nums.length;
         if (len == 0) return 0;
@@ -21,11 +21,11 @@ public class Solution {
         	int fi = 0, li = len - 1;
         	while (nums[fi] > nums[li]) {
         		int mid = (fi + li) / 2;
-        		if (nums[mid] > nums[li]) fi = mid + 1;
-        		else if (nums[fi] > nums[mid]) li = mid;
+        		if (nums[fi] > nums[mid]) li = mid - 1;
+        		else if (nums[mid] > nums[li]) fi = mid + 1;
         	}
         	return nums[fi];
         }
     }
 }
-//20160705Tue11:31 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
+//20160615Wed14:58 duration:26m03s44 Accepted @BryanBo-Cao
