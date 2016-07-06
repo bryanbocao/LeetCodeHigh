@@ -76,3 +76,4 @@ public class Solution20160706Tue1723 {
     	}
     }
 }
+//20160706Tue1723 duration:46m51s88 WrongAnswer(can't deal with multi direction on one char) @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
