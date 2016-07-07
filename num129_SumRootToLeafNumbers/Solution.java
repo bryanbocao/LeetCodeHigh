@@ -29,11 +29,12 @@ public class Solution {
 	 * Definition for a binary tree node. public class TreeNode { int val;
 	 * TreeNode left; TreeNode right; TreeNode(int x) { val = x; } }
 	 */
-	static List<List<Integer>> lsls = new ArrayList<List<Integer>>();
+	static List<List<Integer>> lsls = null;
 
 	public int sumNumbers(TreeNode root) {
 		int sum = 0;
 		if (root != null) {
+		    lsls = new ArrayList<List<Integer>>();
 			List<Integer> ls = new ArrayList<Integer>();
 			addPathsVal(root, ls);
 			Iterator<List<Integer>> itit = lsls.iterator();
@@ -45,7 +46,6 @@ public class Solution {
 				while (it.hasNext()) {
 					tsum *= 10;
 					tsum += it.next();
-					System.out.println(tsum);
 				}
 				sum += tsum;
 			}
@@ -58,12 +58,16 @@ public class Solution {
 			ls.add(root.val);
 			if (root.left == null && root.right == null) {
 				lsls.add(ls);
-			}
-			else {
-				if (root.left != null) addPathsVal(root.left, ls);
+			} else if (root.left != null && root.right != null){
+			    List<Integer> lsRight = new ArrayList<Integer>();
+			    lsRight.addAll(ls);
+				addPathsVal(root.left, ls);
+				addPathsVal(root.right, lsRight);
+			} else {
+                if (root.left != null) addPathsVal(root.left, ls);
 				if (root.right != null) addPathsVal(root.right, ls);
 			}
 	    }
 	}
 }
-//20160706Tue18:22 duration:31m14s69 WrongAnswer(why?) @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
+//20160707Wed12:47 duration:42m33s45 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
