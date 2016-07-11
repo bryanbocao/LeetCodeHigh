@@ -8,7 +8,9 @@ For example,
 Given 1->1->2, return 1->2.
 Given 1->1->2->3->3, return 1->2->3.
  */
-package algorithms.num083_RemoveDuplicatesFromSortedList;
+package algorithms.num082_RemoveDuplicatesFromSortedListII;
+
+import algorithms.num082_RemoveDuplicatesFromSortedListII.ListNode;
 
 /**
  * Definition for singly-linked list.
@@ -20,12 +22,15 @@ package algorithms.num083_RemoveDuplicatesFromSortedList;
  */
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-    	ListNode ln = head;
-    	while (ln != null) {
-    		if (ln.val == ln.next.val) ln.next = ln.next.next;
-    		ln = ln.next;
-    	}
-    	return head;
+        if (head != null) {
+            ListNode ln = head;
+        	while (ln.next != null) {
+        		if (ln.val == ln.next.val) ln.next = ln.next.next;
+        		else ln = ln.next;
+        	}
+        }
+        return head;
     }
 }
+
 //20160711Mon10:13 duration:16m02s86 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,linkedin.com/in/bryanbocao
