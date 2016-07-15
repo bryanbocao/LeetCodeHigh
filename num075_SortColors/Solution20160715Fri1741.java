@@ -20,7 +20,7 @@ Could you come up with an one-pass algorithm using only constant space?
 
 package algorithms.num075_SortColors;
 
-public class Solution {
+public class Solution20160715Fri1741 {
     public void sortColors(int[] nums) {
     	
     	int redTail = 0, blueHead = nums.length - 1;
