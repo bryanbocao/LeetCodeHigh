@@ -14,7 +14,7 @@ You should return the following matrix:
  [ 7, 6, 5 ]
 ]
  */
-package algorithms.num059_SprialMatrixII;
+package algorithms.num059_SpiralMatrixII;
 
 public class Solution20160717Sun1318 {
     public int[][] generateMatrix(int n) {
