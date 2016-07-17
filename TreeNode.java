@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package leetcode.utils;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -18,16 +18,16 @@ import java.util.Queue;
  */
 public class TreeNode {
 
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
     }
 
-    public static TreeNode treeGenerate(String[] inputList) {
-        if(inputList.length==0 || "".equals(inputList[0]) ||inputList[0]!=null) return null;
+    public static TreeNode treeCustructFromStringArray(String[] inputList) {
+        if(inputList.length==0 || "".equals(inputList[0]) || inputList[0]==null) return null;
         TreeNode root = new TreeNode(Integer.valueOf(inputList[0]));
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -43,6 +43,30 @@ public class TreeNode {
             
             if (i<inputList.length && inputList[i] != null) {
                 tm.right = new TreeNode(Integer.valueOf(inputList[i]));
+                queue.add(tm.right);
+            }
+            i++;
+        }
+        return root;
+    }
+    
+    public static TreeNode treeConstructFromIntArray(Integer[] inputList) {
+        if(inputList.length==0 || inputList[0]==null) return null;
+        TreeNode root = new TreeNode(inputList[0]);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int i = 1;
+        while (!queue.isEmpty()) {
+            TreeNode tm = queue.poll();
+
+            if (i<inputList.length && inputList[i] != null) {
+                tm.left = new TreeNode(inputList[i]);
+                queue.add(tm.left);
+            }
+            i++;
+            
+            if (i<inputList.length && inputList[i] != null) {
+                tm.right = new TreeNode(inputList[i]);
                 queue.add(tm.right);
             }
             i++;
