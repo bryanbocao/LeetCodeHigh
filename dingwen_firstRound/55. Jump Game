@@ -1,0 +1,18 @@
+/**
+ *My 1ms, constant space, easy to understand java solution
+ *from back to front, record the number of steps needed to jump to the closest bucket   
+ *which is reachable to the last bucket. One can imagine that there is a virtual  
+ *boolean array to record if the correspondent bucket is reachable to the last 
+ *bucket.
+ */
+
+public boolean canJump(int[] nums) {
+    int lastTrueSteps = 1;
+    for(int i=nums.length-2;i>=0;i--) {
+	if(nums[i]>=lastTrueSteps) {
+	    lastTrueSteps = 0;
+	}
+	lastTrueSteps++;
+    }
+    return lastTrueSteps==1;
+}

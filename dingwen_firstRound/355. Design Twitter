@@ -1,0 +1,87 @@
+/**
+ *
+ * @author dingwen
+ */
+public class Twitter {
+
+    class Post {
+
+        int userId;
+        int tweetId;
+
+        public Post(int userId, int tweetId) {
+            this.userId = userId;
+            this.tweetId = tweetId;
+        }
+
+    }
+
+    Map<Integer, Set<Integer>> followMap = null;
+    LinkedList<Post> postList = null;
+
+    /**
+     * Initialize your data structure here.
+     */
+    public Twitter() {
+        followMap = new HashMap<>();
+        postList = new LinkedList<>();
+    }
+
+    /**
+     * Compose a new tweet.
+     */
+    public void postTweet(int userId, int tweetId) {
+        postList.addFirst(new Post(userId, tweetId));
+    }
+
+    /**
+     * Retrieve the 10 most recent tweet ids in the user's news feed. Each item
+     * in the news feed must be posted by users who the user followed or by the
+     * user herself. Tweets must be ordered from most recent to least recent.
+     */
+    public List<Integer> getNewsFeed(int userId) {
+        List<Integer> res = new ArrayList<>();
+        ListIterator<Post> it = postList.listIterator();
+        int count = 10;
+        while (it.hasNext() && count > 0) {
+            Post post = it.next();
+            if (post.userId == userId
+                    || (followMap.containsKey(userId) && followMap.get(userId).contains(post.userId))) {
+                res.add(post.tweetId);
+                count--;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * Follower follows a followee. If the operation is invalid, it should be a
+     * no-op.
+     */
+    public void follow(int followerId, int followeeId) {
+        if (!followMap.containsKey(followerId)) {
+            Set<Integer> followeeSet = new HashSet<>();
+            followeeSet.add(followeeId);
+            followMap.put(followerId, followeeSet);
+        } else {
+            followMap.get(followerId).add(followeeId);
+        }
+    }
+
+    /**
+     * Follower unfollows a followee. If the operation is invalid, it should be
+     * a no-op.
+     */
+    public void unfollow(int followerId, int followeeId) {
+        if (followMap.containsKey(followerId)) {
+            followMap.get(followerId).remove(followeeId);
+        }
+    }
+}
+
+/**
+ * Your Twitter object will be instantiated and called as such: Twitter obj =
+ * new Twitter(); obj.postTweet(userId,tweetId); List<Integer> param_2 =
+ * obj.getNewsFeed(userId); obj.follow(followerId,followeeId);
+ * obj.unfollow(followerId,followeeId);
+ */

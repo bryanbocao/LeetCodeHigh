@@ -1,0 +1,18 @@
+public class Solution {
+    public void rotate(int[] nums, int k) {
+        k=k%nums.length;
+        rotateRange(nums,0,nums.length-1);
+        rotateRange(nums,0,k-1);
+        rotateRange(nums,k,nums.length-1);
+    }
+    
+    public void rotateRange(int[] nums,int start, int end) {
+        while(end>=start) {
+            int temp = nums[end];
+            nums[end] = nums[start];
+            nums[start] = temp;
+            end--;
+            start++;
+        }
+    }
+}

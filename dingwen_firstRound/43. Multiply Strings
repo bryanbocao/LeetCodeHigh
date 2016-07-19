@@ -1,0 +1,60 @@
+// my acceptable solution
+public class Solution {
+    public String multiply(String num1, String num2) {
+        if (num1 == null || num2 == null) {
+            return null;
+        }
+        if (num1.length() == 0 || num2.length() == 0) {
+            return "";
+        }
+        
+        if ((num1.length() == 1 && num1.charAt(0) == '0')
+                ||(num2.length() == 1 && num2.charAt(0) == '0')) {
+            return "0";
+        }
+         
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sum = new StringBuilder("0");
+        for (int i = num1.length() - 1, count = 0; i >= 0; i--, count++) {
+            int carry = 0;
+            for (int j = num2.length() - 1; j >= 0; j--) {
+                int digit_muliply = (num1.charAt(i) - '0') * (num2.charAt(j) - '0') + carry;
+                carry = digit_muliply / 10;
+                sb.insert(0, digit_muliply - carry * 10);
+            }
+            if (carry != 0) {
+                sb.insert(0, carry);
+            }
+            sum = sumStr(sum, sb, count);
+        }
+        return sum.toString();
+    }
+
+    private StringBuilder sumStr(StringBuilder a, StringBuilder b, int count) {
+
+        while (count > 0) {
+            b.append('0');
+            count--;
+        }
+        
+        //a.length()<=b.length()
+        StringBuilder sb = new StringBuilder();
+        int carry = 0;
+        int sum = 0;
+        for (int i = b.length() - 1, j = a.length() - 1; i >= 0; i--) {
+            if (j >= 0) {
+                sum = a.charAt(j) - '0' + b.charAt(i) - '0' + carry;
+                j--;
+            } else {
+                sum = b.charAt(i) - '0' + carry;
+            }
+            carry = sum / 10;
+            sb.insert(0, sum - carry * 10);
+        }
+        if (carry != 0) {
+            sb.insert(0, carry);
+        }
+        b.setLength(0);
+        return sb;
+    }
+}

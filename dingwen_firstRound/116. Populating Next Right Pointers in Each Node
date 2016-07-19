@@ -1,0 +1,48 @@
+/* 116. Populating Next Right Pointers in Each Node
+* recursive, stack
+*/
+
+public void connect(TreeLinkNode root) {
+        if(root!=null) {
+            
+            if(root.left!=null) {
+                root.left.next = root.right;
+            }
+        
+            if(root.right!=null) {
+                root.right.next = next(root);
+            } 
+            connect(root.left);
+            connect(root.right);
+        }
+    }
+    
+    TreeLinkNode next(TreeLinkNode root) {
+       if(root.next!=null) {
+           return root.next.left!=null?root.next.left:root.next.right;
+       } else {
+           return null;
+       }
+    }
+    
+/**
+ * constant space, link two nodes across trees by using p.right.next = p.next.left
+ *  
+ */
+    public void connect_constant(TreeLinkNode root) {
+        TreeLinkNode levelStart = root;
+        while(levelStart!=null) {
+            TreeLinkNode p = levelStart;
+            while(p!=null) {
+                if(p.left!=null) {
+                    p.left.next = p.right;
+                }
+        
+                if(p.right!=null && p.next!=null) {
+                    p.right.next = p.next.left;
+                } 
+                p=p.next; 
+            }
+             levelStart = levelStart.left;
+        }
+    }
