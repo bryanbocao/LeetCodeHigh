@@ -1,0 +1,36 @@
+/**10ms O(n)
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null || p==null || q==null) return null;
+        int max = Math.max(p.val, q.val);
+        int min = Math.min(p.val, q.val);
+
+        if (root.val > max) {
+            while (root != null && root.val > max) {
+                root = root.left;
+            }
+
+            while (root != null && root.val < min) {
+                root = root.right;
+            }
+        } else if(root.val<min){
+            while (root != null && root.val < min) {
+                root = root.right;
+            }
+
+            while (root != null && root.val > max) {
+                root = root.left;
+            }
+        }
+        return root;
+    }
+    
+}
