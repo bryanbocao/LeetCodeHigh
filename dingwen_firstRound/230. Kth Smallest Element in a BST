@@ -1,0 +1,25 @@
+/* inonder traverse recursive method*/
+public class Solution {
+    int k=0;
+    int value=0;
+    public int kthSmallest(TreeNode root, int k) {
+            this.k=k;
+            kth(root);
+            return value;
+    }
+    
+    public void kth(TreeNode root) {
+            if(root.left!=null) {
+               kthSmallest(root.left,k);
+            }
+            
+            if(root!=null) {
+                k--;
+                if(k==0) value=root.val;
+            }
+            
+            if(root.right!=null) {
+                kthSmallest(root.right,k);
+            }
+    }
+}
