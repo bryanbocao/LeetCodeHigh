@@ -1,0 +1,62 @@
+//elegant and fast solution in discuss
+public class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        rightView(root,0,res);
+        return res;
+    }
+    
+    private void rightView(TreeNode root,int depth,List<Integer> res) {
+        if(root==null) return ;
+        if(depth==res.size()) {
+            res.add(root.val);
+        }
+        rightView(root.right,depth+1,res);
+        rightView(root.left,depth+1,res);
+    }
+}
+
+//my double queue level traversal solution
+public class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if(root==null) return res;
+        
+        Queue<TreeNode> q1 = new LinkedList<>();
+        Queue<TreeNode> q2 = new LinkedList<>();
+        
+        q1.add(root);
+        while(!q1.isEmpty() || !q2.isEmpty()) {
+            while(!q1.isEmpty()) {
+                TreeNode tn = (TreeNode)q1.poll();
+                if(q1.isEmpty()) {
+                    res.add(tn.val);//last element in this level
+                }
+                if(tn.left!=null) {
+                    q2.add(tn.left);
+                }
+                
+                if(tn.right!=null) {
+                    q2.add(tn.right);
+                }
+            }
+            
+            while(!q2.isEmpty()) {
+                TreeNode tn = (TreeNode)q2.poll();
+                if(q2.isEmpty()) {
+                    res.add(tn.val);
+                }
+                
+                if(tn.left!=null) {
+                    q1.add(tn.left);//last element in this level
+                }
+                
+                if(tn.right!=null) {
+                    q1.add(tn.right);
+                }
+            }
+        }
+        
+        return res;
+    }
+}
