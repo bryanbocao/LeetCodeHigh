@@ -1,0 +1,80 @@
+public class Solution {
+    public int calculate(String s) {
+        int exp1 = 0;
+        int exp2 = 0;
+        int exp3 = 0;
+
+        char bigSign = 'd';//+-
+        char minSign = 'd';//*/
+
+        StringBuilder sb = new StringBuilder();
+
+        char[] schar = s.toCharArray();
+        for (int i = 0; i < schar.length; i++) {
+            if (schar[i] == ' ') {
+                continue;
+            }
+
+            if (schar[i] >= '0' && schar[i] <= '9') {
+                sb.append(schar[i]);
+            } else if (schar[i] == '*' || schar[i] == '/') {
+
+                exp3 = Integer.valueOf(sb.toString());
+                switch (minSign) {
+                    case '*':
+                        exp2 *= exp3;
+                        break;
+                    case '/':
+                        exp2 /= exp3;
+                        break;
+                    default:
+                        exp2 = exp3;//no assign value to exp2
+                        break;
+                }
+
+                minSign = schar[i];
+                sb.setLength(0);
+            } else {//+-
+                if (exp2 != 0) {
+                    exp3 = Integer.valueOf(sb.toString());
+                    if (minSign == '*') {
+                        exp2 *= exp3;
+                    } else if (minSign == '/') {
+                        exp2 /= exp3;
+                    }
+                } else {
+                    exp2 = Integer.valueOf(sb.toString());
+                }
+
+                if (bigSign == '-') {
+                    exp1 = exp1 - exp2;
+                } else {
+                    exp1 = exp1 + exp2;
+                }
+
+                exp2 = 0;
+                bigSign = schar[i];
+                minSign = 'd';
+                sb.setLength(0);
+            }
+
+        }
+
+        if (minSign != 'd') {
+            exp3 = Integer.valueOf(sb.toString());
+            if (minSign == '*') {
+                exp2 *= exp3;
+            } else {
+                exp2 /= exp3;
+            }
+        } else {
+            exp2 = Integer.valueOf(sb.toString());
+        }
+
+        if (bigSign == '-') {
+            return exp1 -= exp2;
+        } else {
+            return exp1 += exp2;
+        }
+    }
+}
