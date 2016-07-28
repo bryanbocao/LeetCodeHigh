@@ -1,0 +1,10 @@
+public class Solution {
+    public int getSum(int a, int b) {
+        int result = a^b;//no carrier
+        int carry = (a&b)<<1;//carrier
+        if(carry!=0) {
+            return getSum(result,carry);
+        }
+        return result;
+    }
+}
