@@ -18,7 +18,7 @@ public class Solution {
         else {
         	char[] cs = s.toCharArray();
         	Stack<Character> stk = new Stack<Character>();
-        	for (int i = 0; i < cs.length; i++) {
+        	for (int i = 0; i < len; i++) {
         		switch (cs[i]) {
         		case '(':
         		case '[':
