@@ -1,0 +1,9 @@
+public class Solution {
+    public List<Integer> grayCode(int n) {
+        List<Integer> res = new ArrayList<>();
+        for(int j=0;(j&1<<n)==0;j++) {
+            res.add(j^j>>1);//g(i)=i^(i/2)
+        }
+        return res;
+    }
+}

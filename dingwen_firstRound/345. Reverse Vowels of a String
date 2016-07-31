@@ -1,0 +1,32 @@
+public class Solution {
+//my 4ms solution with set.beats 97%
+public String reverseVowels(String s) {
+        boolean[] isVowels = new boolean[128];
+        char[] voelChars = {'a','e','i','o','u','A','E','I','O','U'};
+        for(char v :voelChars) {
+            isVowels[v] = true;
+        }
+        char[] ss = s.toCharArray();
+        
+        int left=0;
+        int right=ss.length-1;
+        
+        while(left<right) {
+            while(left<right && !isVowels[ss[left]]) {
+                left++;
+            }
+            
+            while(left<right && !isVowels[ss[right]]) {
+                right--;
+            }
+
+            char temp = ss[left];
+            ss[left] = ss[right];
+            ss[right] = temp;
+            left++;
+            right--;
+           
+        }
+        return String.valueOf(ss);
+    }
+}
