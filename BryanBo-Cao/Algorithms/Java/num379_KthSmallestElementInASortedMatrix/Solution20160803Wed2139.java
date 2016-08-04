@@ -24,7 +24,7 @@ package algorithms.num379_KthSmallestElementInASortedMatrix;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution {
+public class Solution20160803Wed2139 {
     public int kthSmallest(int[][] matrix, int k) {
         if (matrix != null && matrix.length > 0 && matrix[0].length > 0) {
         	int i = 0, j = 0, r = matrix.length, c = matrix[0].length;
@@ -50,7 +50,7 @@ public class Solution {
     }
     
 }
-//20160803Wed21:48 duration:6m35s73 WrongAnswer @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
+//20160803Wed21:39 duration:23m23s12 WrongAnswer @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
 
 /**
 Input:

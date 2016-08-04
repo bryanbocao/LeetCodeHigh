@@ -79,4 +79,4 @@ public class Solution20160803Wed1645 {
     }
     
 }
-//20160803Wed16:45 WrongAnser @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
+//20160803Wed16:45 WrongAnswer @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
