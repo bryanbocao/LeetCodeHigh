@@ -21,9 +21,6 @@ You may assume k is always valid, 1 ≤ k ≤ n2.
  */
 package algorithms.num379_KthSmallestElementInASortedMatrix;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Solution {
     public int kthSmallest(int[][] matrix, int k) {
         if (matrix != null && matrix.length > 0 && matrix[0].length > 0) {
@@ -31,26 +28,40 @@ public class Solution {
         	int[] rowFirstJ = new int[r], colFirstI = new int[c];
         	if (c > 1) rowFirstJ[0] = 1;
         	if (r > 1) colFirstI[0] = 1;
-        	int step = 1;
+        	int step = 1, startII = 0, startJJ = 0;
         	while (i + j < r + c - 1) {
-        		System.out.println("step: " + step + " i: " + i + " j: " + j);
-        		System.out.println("rowFirstJ[1]: " + rowFirstJ[1]);
         		if(step++ == k) return matrix[i][j];
-        		int nextJ = (j + 1 < c) ? j + 1 : -1, nextI = (i + 1 < r) ? i + 1 : -1;
-        		int nextJV = -1, nextIV = -1;
-        		if (j + 1 < c) nextJV = matrix[colFirstI[j + 1]][j + 1];
-        		if (i + 1 < r) nextIV = matrix[i + 1][rowFirstJ[i + 1]];
-        		if (nextJ == -1 || (nextIV > -1 && nextIV < nextJV)) j = rowFirstJ[++i];
-        		else if (nextI == -1 || (nextJV > -1 && nextJV <= nextIV)) i = colFirstI[++j];
-        		if (j + 1 < c) rowFirstJ[i] = j + 1;
-    			if (i + 1 < r) colFirstI[j] = i + 1;
+        		int minI = -1, minJ = -1;
+        		
+        		boolean hitFirstRow = false;
+        		for (int ii = startII; ii < r && rowFirstJ[ii] < r && !hitFirstRow; ii++) {
+        			int jj = rowFirstJ[ii];
+        			if (jj == 0) hitFirstRow = true;
+        			if ((minI == -1 && minJ == -1) || (matrix[ii][jj] < matrix[minI][minJ])) {
+        				minI = ii; minJ = jj;
+        			}
+        		}
+        		
+        		boolean hitFirstCol = false;
+        		for (int jj = startJJ; jj < c && colFirstI[jj] < c && !hitFirstCol; jj++) {
+        			int ii = colFirstI[jj];
+        			if (ii == 0) hitFirstCol = true;
+        			if ((minI == -1 && minJ == -1) || (matrix[ii][jj] < matrix[minI][minJ])) {
+        				minI = ii; minJ = jj;
+        			}
+        		}
+        		
+        		i = minI; j = minJ;
+        		rowFirstJ[i] = j + 1; colFirstI[j] = i + 1;
+        		if (rowFirstJ[i] == c && i + 1 < r) startII = i + 1;
+        		if (colFirstI[j] == r && j + 1 < c) startJJ = j + 1;
         	}
         }
         return -1;
     }
     
 }
-//20160803Wed21:48 duration:6m35s73 WrongAnswer @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
+//20160803Wed20:17 duration:49m44s00 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
 
 /**
 Input:
@@ -63,4 +74,28 @@ Output:
 14
 Expected:
 12
+=========================
+[[1,5,9],[10,11,13],[12,13,15]]
+8
+Your stdout
+
+step: 1 i: 0 j: 0
+rowFirstJ[1]: 0
+step: 2 i: 0 j: 1
+rowFirstJ[1]: 0
+step: 3 i: 0 j: 2
+rowFirstJ[1]: 0
+step: 4 i: 1 j: 1
+rowFirstJ[1]: 2
+step: 5 i: 2 j: 1
+rowFirstJ[1]: 2
+step: 6 i: 2 j: 2
+rowFirstJ[1]: 2
+Your answer
+
+Line 34: java.lang.ArrayIndexOutOfBoundsException: -1
+Expected answer
+
+13
+
 */
