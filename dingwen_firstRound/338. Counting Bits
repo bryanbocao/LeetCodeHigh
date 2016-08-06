@@ -1,0 +1,35 @@
+//dp
+public class Solution {
+    public int[] countBits(int num) {
+        int[] res = new int[num+1];
+        for(int i=1;i<=num;i++) {
+            res[i] = res[i>>1] + (i&1);
+        }
+        return res;
+    }
+}
+
+//bf
+public class Solution {
+    public int[] countBits(int num) {
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i<=num;i++) {
+            list.add(count(i));
+        }
+        
+        int[] res = new int[list.size()];
+        for(int i=0;i<list.size();i++) {
+            res[i]=list.get(i);
+        }
+        return res;
+    }
+    
+    private int count(int n) {
+        int count=0;
+        while(n!=0) {
+            n = n&(n-1);
+            count++;
+        }
+        return count;
+    }
+}
