@@ -1,0 +1,59 @@
+//simple solution
+public class Solution {
+    public int compareVersion(String version1, String version2) {
+       String[] v1s = version1.split("\\.");
+       String[] v2s = version2.split("\\.");
+
+       for(int i=0;i<Math.max(v1s.length,v2s.length);i++) {
+           Integer vi1 = i>=v1s.length?0:Integer.parseInt(v1s[i]);
+           Integer vi2 = i>=v2s.length?0:Integer.parseInt(v2s[i]);
+           int compare = vi1.compareTo(vi2);
+           if(compare!=0) {
+               return compare;
+           }
+       }
+       
+        return 0;
+    }
+}
+
+// my solution
+public int compareVersion(String version1, String version2) {
+        String[] v1s = version1.split("\\.");
+        String[] v2s = version2.split("\\.");
+
+        for (int i = 0; i < Math.max(v1s.length, v2s.length); i++) {
+            int res = compare(i >= v1s.length ? "" : v1s[i], i >= v2s.length ? "" : v2s[i]);
+            if (res != 0) {
+                return res;
+            }
+        }
+        return 0;
+}
+
+
+private int compare(String ss1, String ss2) {
+        char[] s1 = ss1.toCharArray();
+        char[] s2 = ss2.toCharArray();
+
+        int j = 0;
+        while (j < s1.length && s1[j] == '0') {
+            j++;
+        }
+
+        int i = 0;
+        while (i < s2.length && s2[i] == '0') {
+            i++;
+        }
+
+        int si1 = "".equals(ss1.substring(j)) ? 0 : Integer.valueOf(ss1.substring(j));
+        int si2 = "".equals(ss2.substring(i)) ? 0 : Integer.valueOf(ss2.substring(i));
+
+        if (si1 > si2) {
+            return 1;
+        }
+        if (si1 < si2) {
+            return -1;
+        }
+        return 0;
+}
