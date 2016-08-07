@@ -1,0 +1,20 @@
+public class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        boolean[][] existRow = new boolean[10][board.length];//row
+        boolean[][] existCol = new boolean[10][board[0].length];//col
+        boolean[][] subBox = new boolean[10][10];
+        
+        for(int i=0;i<board.length;i++) {
+            for(int j=0;j<board[0].length;j++) {
+                if(board[i][j]!='.') {
+                    int k = i/3*3+j/3;
+                    if(existRow[board[i][j]-'1'][i]||existCol[board[i][j]-'1'][j] || subBox[k][board[i][j]-'1']) return false;
+                    existRow[board[i][j]-'1'][i]=true;
+                    existCol[board[i][j]-'1'][j]=true;
+                    subBox[k][board[i][j]-'1']=true;
+                }
+            }
+        }
+        return true;
+    }
+}
