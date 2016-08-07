@@ -80,3 +80,11 @@ public class Solution {
 	}
 }
 ```
+
+##Option 2:
+Some problems just need some blocks of the code but not the entire scripts, in this case just copy the scrips inside these two tags
+```
+// BryanBo-Cao's code ====== start 
+
+// BryanBo-Cao's code ====== end
+```
