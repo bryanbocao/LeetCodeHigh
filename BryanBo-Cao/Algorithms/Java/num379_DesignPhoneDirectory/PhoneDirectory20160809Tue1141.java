@@ -1,3 +1,7 @@
+/**
+https://leetcode.com/problems/design-phone-directory/
+Locked Question
+ */
 package algorithms.num379_DesignPhoneDirectory;
 
 import java.util.ArrayList;
