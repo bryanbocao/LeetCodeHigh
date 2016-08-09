@@ -1,0 +1,32 @@
+//share my dp solution
+public class Solution {
+    public int integerBreak(int n) {
+        if(n<=3) return n-1;
+        
+        int f[] = new int[n+1];
+        f[2]=2;
+        f[3]=3;
+        
+        for(int i=4;i<=n;i++) {
+            for(int j=2;j<=i/2;j++) {
+                f[i]=(int)Math.max(f[i],f[j]*f[i-j]);
+            }
+        }
+        return f[n];
+    }
+}
+
+
+//math solution
+public class Solution {
+    public int integerBreak(int n) {
+        if(n<=3) return n-1;
+        int product=1;
+        while(n>4) {
+            product*=3;
+            n-=3;
+        }
+        product*=n;
+        return product;
+    }
+}
