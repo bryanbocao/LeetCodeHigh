@@ -1,4 +1,4 @@
-package algorithms.num379_KthSmallestElementInASortedMatrix;
+package algorithms.num378_KthSmallestElementInASortedMatrix;
 
 public class Test {
 
