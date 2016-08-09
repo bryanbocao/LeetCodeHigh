@@ -19,7 +19,7 @@ return 13.
 Note: 
 You may assume k is always valid, 1 ≤ k ≤ n2.
  */
-package algorithms.num379_KthSmallestElementInASortedMatrix;
+package algorithms.num378_KthSmallestElementInASortedMatrix;
 
 public class Solution20160803Wed1645 {
     public int kthSmallest(int[][] matrix, int k) {
