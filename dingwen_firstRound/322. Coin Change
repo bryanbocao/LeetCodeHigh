@@ -1,0 +1,20 @@
+//dp solution
+public class Solution {
+     
+    public int coinChange(int[] coins, int amount) {
+        int[] f = new int[amount+1];
+        
+        for(int i=1;i<=amount;i++) {
+            f[i]=amount+1;
+        }
+        
+        for(int i=1;i<=amount;i++) {
+            for(int j=0;j<coins.length;j++) {
+                if(i>=coins[j]) {
+                    f[i]=(int)Math.min(f[i],f[i-coins[j]]+1);
+                }
+            }
+        }
+        return f[amount]>amount?-1:f[amount];
+    }
+}
