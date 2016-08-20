@@ -1,0 +1,34 @@
+public class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+       PriorityQueue<Tuple> queue = new PriorityQueue<Tuple>();
+        for(int col=0;col<matrix[0].length;col++) { 
+            queue.offer(new Tuple(0,col,matrix[0][col]));
+        }
+          
+        while(k>1) {
+            k--;
+            Tuple t = queue.poll();
+            if(t.row==matrix.length-1) continue;
+            queue.offer(new Tuple(t.row+1,t.col,matrix[t.row+1][t.col]));
+        }
+        
+        return queue.poll().val;
+    }
+    
+    class Tuple implements Comparable<Tuple>{
+        int row;
+        int col;
+        int val;
+        
+        Tuple(int row,int col, int val) {
+            this.row = row;
+            this.col = col;
+            this.val = val;
+        }
+        
+        @Override
+        public int compareTo(Tuple other) {
+            return this.val-other.val;
+        }
+    }
+}
