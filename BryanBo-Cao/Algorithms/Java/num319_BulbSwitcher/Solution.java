@@ -18,8 +18,27 @@ So you should return 1, because there is only one bulb is on.
 package algorithms.num319_BulbSwitcher;
 
 public class Solution {
-    public int bulbSwitch(int n) {
-
-    }
+    public int bulbSwitch(int n) {return (int) Math.sqrt(n);}
 }
-//20160604Sat12:20 23m42s15 @BryanBo-Cao
+//SolvedOn20160821SunAt13:54 CodingDuration:12m26s04 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
+
+/**
+n	return
+0	0
+1	1
+2	1
+3	1
+4	2
+5	2
+6	2
+7	2
+8	2
+9	3
+10	3
+11	3
+12	3
+13	3
+14	3
+15	3
+16	4
+*/
