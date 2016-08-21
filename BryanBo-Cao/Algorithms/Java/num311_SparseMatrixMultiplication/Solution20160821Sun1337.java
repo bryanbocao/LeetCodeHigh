@@ -22,4 +22,4 @@ public class Solution20160821Sun1337 {
     	return M;
     }
 }
-//TriedOn20160821Sun13:37 CodingDuration:12m36s82 TimeLimitExceeded @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
+//TriedOn20160821SunAt13:37 CodingDuration:12m36s82 TimeLimitExceeded @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
