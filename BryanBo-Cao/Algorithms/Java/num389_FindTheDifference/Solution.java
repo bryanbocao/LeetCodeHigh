@@ -38,4 +38,4 @@ public class Solution {
         return 0;
     }
 }
-//SolvedOn20160828Sat14:17 CodingDuration:27m52s95 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
+//SolvedOn20160828SatAt14:17 CodingDuration:27m52s95 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao 
