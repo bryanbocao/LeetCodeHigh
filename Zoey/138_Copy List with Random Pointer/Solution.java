@@ -42,3 +42,6 @@ public class Solution {
         return dummy.next;
     }
 }
+
+//Reference:
+//https://discuss.leetcode.com/topic/7594/a-solution-with-constant-space-complexity-o-1-and-linear-time-complexity-o-n/2
