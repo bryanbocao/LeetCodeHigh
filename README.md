@@ -89,5 +89,10 @@ Some problems just need some blocks of the code but not the entire scripts, in t
 // BryanBo-Cao's code ====== end
 ```
 
-Reference:
+##Reference:
 leetcode.com
+
+##Useful Links:
+http://coolshell.cn/articles/12052.html
+https://www.youtube.com/watch?v=264b_f6828Y&list=PLGvfHSgImk4ZR3v2drDwHrmwu2a645sxL
+https://www.zhihu.com/question/20368410
