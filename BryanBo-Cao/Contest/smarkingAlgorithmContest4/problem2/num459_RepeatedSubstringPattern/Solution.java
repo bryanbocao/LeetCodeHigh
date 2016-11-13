@@ -27,6 +27,7 @@ public class Solution {
     	return false;
     }
 }
+//https://leetcode.com/contest/smarking-algorithm-contest-4/problems/repeated-substring-pattern/
 //SolvedOn20161112Sat CodingDuration:29m40s97 Accepted @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao
 
 
