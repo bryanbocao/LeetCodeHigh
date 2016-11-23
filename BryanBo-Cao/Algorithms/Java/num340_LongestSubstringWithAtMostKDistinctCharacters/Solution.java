@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Solution {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
+    	
         int maxlen = 0;
         char[] cs = s.toCharArray();
         Map<Character, Integer> map = new HashMap<Character, Integer>();
