@@ -96,3 +96,7 @@ leetcode.com
 http://coolshell.cn/articles/12052.html
 https://www.youtube.com/watch?v=264b_f6828Y&list=PLGvfHSgImk4ZR3v2drDwHrmwu2a645sxL
 https://www.zhihu.com/question/20368410
+
+##Courses
+Dynamic Programming
+https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/
