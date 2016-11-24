@@ -100,5 +100,7 @@ https://www.zhihu.com/question/20368410
 ##Courses
 Dynamic Programming
 https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/
+
 https://people.eecs.berkeley.edu/~vazirani/algorithms/chap6.pdf
+
 https://www.cs.cmu.edu/~avrim/451f09/lectures/lect1001.pdf
