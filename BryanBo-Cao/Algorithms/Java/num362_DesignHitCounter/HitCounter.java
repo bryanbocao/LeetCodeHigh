@@ -9,7 +9,7 @@ import java.util.Queue;
 
 public class HitCounter {
 
-	Queue<Integer> q = null;
+    Queue<Integer> q = null;
     /** Initialize your data structure here. */
     public HitCounter() {
         q = new LinkedList<Integer>();
