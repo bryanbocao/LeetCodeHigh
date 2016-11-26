@@ -6,9 +6,9 @@ public class MySolution {
         for(int i=0;i<dirs.length;i++){
             int level = dirs[i].lastIndexOf('\t')+1;
             //System.out.println(level+":"+dirs[i]);
-            String name = dirs[i].substring(level);
+            String name = dirs[i].substring(level); //remove '\t' before file name
             if(level==0) map = new HashMap<>();
-            map.put(level,name.length()+1);
+            map.put(level,name.length()+1); //for dir add '/'
             if(name.contains(".")){
                 res = Math.max(res, getLength(map,level));
             }
@@ -23,6 +23,6 @@ public class MySolution {
             if(level.getKey()>end) break;
             res += level.getValue();
         }
-        return res-1;
+        return res-1; //remove '/' for file
     }
 }
