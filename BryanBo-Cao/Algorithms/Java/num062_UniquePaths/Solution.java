@@ -35,4 +35,4 @@ Hide Tags Array Dynamic Programming
 Hide Similar Problems (M) Unique Paths II (M) Minimum Path Sum (H) Dungeon Game
 
  */
-//SolvedOn20161211SunAt1:31 CodingDuration:19m33s40
+//SolvedOn20161211SunAt1:31 CodingDuration:19m33s40 @github.com/BryanBo-Cao,hackerrank.com/bryanbocao,leetcode.com/bryanbocao-0/,linkedin.com/in/bryanbocao
