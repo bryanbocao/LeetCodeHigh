@@ -1,23 +1,23 @@
 package num394_DecodeString;
 
-public class SolutionInspiredFromOther2_Revised{
+public class Practice_SolutionFromOther2_Revised {
 	int i = 0;
 	public String decodeString(String s) {
-		int n = 0;
-		StringBuilder resultSB = new StringBuilder();
-		while (i < s.length()) {
-			if (Character.isDigit(s.charAt(i))) {
-				while (Character.isDigit(s.charAt(i))) n = n * 10 + s.charAt(i++) - '0';
-				i++;	// '['
-				String nestedS = decodeString(s);
-				while (n > 0) {
-				    resultSB.append(nestedS);
-				    n--;
-				}
-			} else if (Character.isLetter(s.charAt(i))) resultSB.append(s.charAt(i++));
-			else if (s.charAt(i++) == ']') return resultSB.toString();
-		}
-		return resultSB.toString();
+	    int n = 0;
+	    StringBuilder resultSB = new StringBuilder();
+	    while (i < s.length()) {
+	        if (Character.isDigit(s.charAt(i))) {
+	            while (Character.isDigit(s.charAt(i))) n = n * 10 + s.charAt(i++) - '0';
+	            i++; //'['
+	            String nestedS = decodeString(s);
+	            while (n > 0) {
+	                resultSB.append(nestedS);
+	                n--;
+	            }
+	        } else if (Character.isLetter(s.charAt(i))) resultSB.append(s.charAt(i++));
+	        else if (s.charAt(i++) == ']') return resultSB.toString();
+	    }
+	    return resultSB.toString();
 	}
 }
 //https://leetcode.com/problems/decode-string/
@@ -44,5 +44,4 @@ Hide Company Tags Google
 Hide Tags Depth-first Search Stack
 Hide Similar Problems (H) Encode String with Shortest Length
 */
-//from https://discuss.leetcode.com/topic/57228/0ms-simple-c-solution/4
-//from https://discuss.leetcode.com/user/zhueason
+//PracticedOn20161215Thu 7times
