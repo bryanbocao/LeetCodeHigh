@@ -14,12 +14,12 @@ public class Revised_Solution_FromOther {
         return (root == null) ? 0 : Math.max(dfs(root.left, 1, root.val), dfs(root.right, 1, root.val));
     }
     
-    public int dfs(TreeNode root, int count, int val){
-        if (root == null) return count;
-        count = (root.val - val == 1) ? count + 1 : 1;
-        int left = dfs(root.left, count, root.val);
-        int right = dfs(root.right, count, root.val);
-        return Math.max(Math.max(left, right), count);
+    private static int dfs(TreeNode root, int cnt, int parentVal){
+        if (root == null) return cnt;
+        cnt = (root.val - parentVal == 1) ? cnt + 1 : 1;
+        int leftCnt = dfs(root.left, cnt, root.val);
+        int rightCnt = dfs(root.right, cnt, root.val);
+        return Math.max(Math.max(leftCnt, rightCnt), cnt);
     }
 }
 //https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/
