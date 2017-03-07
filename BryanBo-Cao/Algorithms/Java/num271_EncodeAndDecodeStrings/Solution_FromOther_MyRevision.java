@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class CodecFromOther_MyRevision {
+public class Solution_FromOther_MyRevision {
 
     // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {
