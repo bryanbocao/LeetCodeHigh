@@ -1,9 +1,9 @@
-package com.num340_LongestSubstringWithAtMostKDistinctCharacters;
+package com.num340_LongestSubstringWithAtMostKDistinctCharacters.previousAttempts;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SolutionSolution20170316Thu4 {
+public class Solution20170316Thu3 {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         int leftIndex = 0, res = 0;
@@ -11,27 +11,23 @@ public class SolutionSolution20170316Thu4 {
         for (int rightIndex = 0; rightIndex < s.length(); rightIndex++) {
             if (map.get(cs[rightIndex]) == null) map.put(cs[rightIndex], 1);
             else map.put(cs[rightIndex], map.get(cs[rightIndex]) + 1);
-            System.out.println();
-            System.out.println("leftIndex: " + leftIndex + " rightIndex: " + rightIndex);
-            System.out.println(cs[rightIndex]);
-            System.out.println("cs[leftIndex]: " + cs[leftIndex] + "map.get(cs[leftIndex]): " + map.get(cs[leftIndex]));
-            if (map.size() > k) {
+            if (map.containsKey(cs[leftIndex])) {
                 System.out.println();
-                System.out.println(" > k");
-                System.out.println("> k leftIndex: " + leftIndex + " rightIndex: " + rightIndex);
+                System.out.println("leftIndex: " + leftIndex + " rightIndex: " + rightIndex);
                 System.out.println(cs[rightIndex]);
-                System.out.println("> k cs[leftIndex]: " + cs[leftIndex] + "map.get(cs[leftIndex]): " + map.get(cs[leftIndex]));
-
-                while (leftIndex++ < cs.length && map.get(cs[leftIndex - 1]) != null && map.get(cs[leftIndex - 1]) - 1 > 0) {
-                    map.put(cs[leftIndex - 1], map.get(cs[leftIndex - 1]) - 1);
-                    System.out.println(leftIndex - 1);
-                    System.out.println("while leftIndex - 1: " + (leftIndex - 1) + " rightIndex: " + rightIndex);
+                System.out.println("cs[leftIndex]: " + cs[leftIndex] + "map.get(cs[leftIndex]): " + map.get(cs[leftIndex]));
+            }
+            if (map.size() > k) {
+                while (leftIndex < cs.length && map.get(cs[leftIndex]) != null && map.get(cs[leftIndex]) - 1 > 0) {
+                    map.put(cs[leftIndex], map.get(cs[leftIndex]) - 1);
+                    leftIndex++;
+                    System.out.println(leftIndex);
+                    System.out.println("leftIndex: " + leftIndex + " rightIndex: " + rightIndex);
+                    if (map.get(cs[leftIndex]) == 0) map.remove(cs[leftIndex--]);
                 }
-                map.remove(cs[leftIndex - 1]);
+                // map.remove(cs[leftIndex - 1]);
                 System.out.println("line 24");
             }
-            System.out.println("rightIndex - leftIndex + 1");
-            System.out.println(rightIndex - leftIndex + 1);
             res = Math.max(res, rightIndex - leftIndex + 1);
         }
         return res;

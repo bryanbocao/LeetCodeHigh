@@ -3,11 +3,12 @@ package com.num340_LongestSubstringWithAtMostKDistinctCharacters;
 public class Solution_FromOther_BryanBCRevision {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         int[] count = new int[256];
+        char[] cs = s.toCharArray();
         int distinctNum = 0, leftI = 0, res = 0;
-        for (int rightI = 0; rightI < s.length(); rightI++) {
-            if (count[s.charAt(rightI)]++ == 0) distinctNum++;
+        for (int rightI = 0; rightI < cs.length; rightI++) {
+            if (count[cs[rightI]]++ == 0) distinctNum++;
             if (distinctNum > k) {
-                while (--count[s.charAt(leftI++)] > 0);
+                while (--count[cs[leftI++]] > 0);
                 distinctNum--;
             }
             res = Math.max(res, rightI - leftI + 1);

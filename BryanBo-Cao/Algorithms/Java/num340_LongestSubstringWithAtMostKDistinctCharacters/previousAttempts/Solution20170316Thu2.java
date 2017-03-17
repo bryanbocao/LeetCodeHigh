@@ -1,9 +1,9 @@
-package com.num340_LongestSubstringWithAtMostKDistinctCharacters;
+package com.num340_LongestSubstringWithAtMostKDistinctCharacters.previousAttempts;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SolutionSolution20170316Thu3 {
+public class Solution20170316Thu2 {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         int leftIndex = 0, res = 0;
@@ -18,14 +18,12 @@ public class SolutionSolution20170316Thu3 {
                 System.out.println("cs[leftIndex]: " + cs[leftIndex] + "map.get(cs[leftIndex]): " + map.get(cs[leftIndex]));
             }
             if (map.size() > k) {
-                while (leftIndex < cs.length && map.get(cs[leftIndex]) != null && map.get(cs[leftIndex]) - 1 > 0) {
+                while (leftIndex < cs.length && map.get(cs[leftIndex]) != null && map.get(cs[leftIndex]) > 0) {
                     map.put(cs[leftIndex], map.get(cs[leftIndex]) - 1);
                     leftIndex++;
                     System.out.println(leftIndex);
-                    System.out.println("leftIndex: " + leftIndex + " rightIndex: " + rightIndex);
-                    if (map.get(cs[leftIndex]) == 0) map.remove(cs[leftIndex--]);
                 }
-                // map.remove(cs[leftIndex - 1]);
+                map.remove(cs[leftIndex - 1]);
                 System.out.println("line 24");
             }
             res = Math.max(res, rightIndex - leftIndex + 1);
