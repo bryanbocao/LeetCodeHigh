@@ -3,14 +3,17 @@ package leetCodeWeeklyContest24.problem3;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solution {
+public class Solution_20170318SatNight {
     public List<List<Integer>> updateMatrix(List<List<Integer>> matrix) {
         int row = matrix.size(), col = matrix.get(0).size();
-        List<Integer> innerCellsLs = new ArrayList<Integer>(); // inner cells are the cells that there's no 0 surround it
+        List<List<Integer>> nM = new ArrayList<List<Integer>>();
+        List<Integer> doubleCheckLs = new ArrayList<Integer>();
         for (int i = 0; i < row; i++) {
+        	List<Integer> nR = new ArrayList<Integer>();
         	for (int j = 0; j < col; j++) {
         		int cell = matrix.get(i).get(j);
-        		if (cell > 0) {
+        		if (cell == 0) nR.add(0);
+        		else {
         			int min = Integer.MAX_VALUE;
         			boolean inner = true;
         			if (i > 0) {
@@ -33,35 +36,36 @@ public class Solution {
         				if (furtherCell == 0) inner = false;
         				min = Math.min(furtherCell, min);
         			}
-        			matrix.get(i).set(j, min + 1);
+        			nR.add(min + 1);
         			if (inner) {
-        				innerCellsLs.add(i);
-        				innerCellsLs.add(j);
+        				doubleCheckLs.add(i);
+        				doubleCheckLs.add(j);
         			}
         		}
         	}
+        	nM.add(nR);
         }
         
-        //check if there are inner cells,
-        while (innerCellsLs.size() > 0) {
-        	for (int ii = 0; ii < innerCellsLs.size();) {
-        		int i = innerCellsLs.get(ii), j = innerCellsLs.get(ii + 1);
+        //check innter
+        while (doubleCheckLs.size() > 0) {
+        	for (int ii = 0; ii < doubleCheckLs.size();) {
+        		int i = doubleCheckLs.get(ii), j = doubleCheckLs.get(ii + 1);
         		int min = Integer.MAX_VALUE;
-    			if (i > 0) min = Math.min(matrix.get(i - 1).get(j), min);
-    			if (j < col - 1) min = Math.min(matrix.get(i).get(j + 1), min);
-    			if (i < row - 1) min = Math.min(matrix.get(i + 1).get(j), min);
-    			if (j > 0) min = Math.min(matrix.get(i).get(j - 1), min);
-    			int currMin = matrix.get(i).get(j);
+    			if (i > 0) min = Math.min(nM.get(i - 1).get(j), min);
+    			if (j < col - 1) min = Math.min(nM.get(i).get(j + 1), min);
+    			if (i < row - 1) min = Math.min(nM.get(i + 1).get(j), min);
+    			if (j > 0) min = Math.min(nM.get(i).get(j - 1), min);
+    			int currMin = nM.get(i).get(j);
             	if (currMin < min + 1) {
-            		matrix.get(i).set(j, min + 1);
+            	    nM.get(i).set(j, min + 1);
             	    ii += 2;
             	} else {
-            		innerCellsLs.remove(ii);
-            		innerCellsLs.remove(ii);
+            		doubleCheckLs.remove(ii);
+            		doubleCheckLs.remove(ii);
             	}
         	}
         }
-        return matrix;
+        return nM;
     }
     
 }
