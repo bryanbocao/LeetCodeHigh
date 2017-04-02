@@ -1,4 +1,4 @@
-package com.num340_LongestSubstringWithAtMostKDistinctCharacters.previousAttempts;
+package algorithms.num340_LongestSubstringWithAtMostKDistinctCharacters.previousAttempts;
 
 import java.util.HashMap;
 import java.util.Map;

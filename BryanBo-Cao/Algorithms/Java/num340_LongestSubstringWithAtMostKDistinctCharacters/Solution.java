@@ -1,4 +1,4 @@
-package com.num340_LongestSubstringWithAtMostKDistinctCharacters;
+package algorithms.num340_LongestSubstringWithAtMostKDistinctCharacters;
 
 import java.util.*;
 
