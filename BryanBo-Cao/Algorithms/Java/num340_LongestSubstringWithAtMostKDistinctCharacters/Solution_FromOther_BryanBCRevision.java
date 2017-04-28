@@ -1,4 +1,4 @@
-package com.num340_LongestSubstringWithAtMostKDistinctCharacters;
+package algorithms.num340_LongestSubstringWithAtMostKDistinctCharacters;
 
 public class Solution_FromOther_BryanBCRevision {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
