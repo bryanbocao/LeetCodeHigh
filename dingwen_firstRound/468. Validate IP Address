@@ -1,0 +1,75 @@
+public class Solution {
+        public String validIPAddress(String IP) {
+        if (IP == null) {
+            return "Neither";
+        }
+        if (IP.contains(".")) {
+            return isValidIP4(IP) ? "IPv4" : "Neither";
+        }
+        return isValidIP6(IP) ? "IPv6" : "Neither";
+    }
+
+    private boolean isValidIP4(String ip) {
+        if(ip.endsWith(".")) return false;
+        String[] sarr = ip.split("\\.");
+        if (sarr.length != 4) {
+            return false;
+        }
+        for (String s : sarr) {
+            if (s.length() == 0 || s.length() > 3) {
+                return false;
+            }
+            if (s.startsWith("0") && s.length() > 1) {
+                return false;
+            }
+            if (s.length() == 3) {
+                if (s.charAt(0) - '0' > 2) {
+                    return false;
+                } else if (s.charAt(0) - '0' == 2) {
+                    if (s.charAt(1) - '0' > 5) {
+                        return false;
+                    } else if (s.charAt(1) - '0' == 5 && s.charAt(2) - '0' > 5) {
+                        return false;
+                    }
+                }
+            }
+
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) > '9' || s.charAt(i) < '0') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean isValidIP6(String ip) {
+        if(ip.endsWith(":")) return false;
+        String[] sarr = ip.split(":");
+        if (sarr.length != 8) {
+            return false;
+        }
+        for (String s : sarr) {
+            if (s.length() == 0 || s.length() > 4) {
+                return false;
+            }
+            //all zero 1-4 0
+
+            //a-f, A-F, 0-9
+            //  boolean preZero = true;
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                if (c == '0') {
+                    continue;
+                }
+
+                if ((c < 'a' || c > 'f') && (c < 'A' || c > 'F') && (c < '0' || c > '9')) {
+                    return false;
+                }
+
+            }
+        }
+        return true;
+    }
+
+}

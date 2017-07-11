@@ -39,3 +39,18 @@ public class Solution {
         }
     }
 }
+
+//clever solution
+public class Solution {
+    TreeNode pre = null;
+    public void flatten(TreeNode root) {
+        if(root!=null) {
+            flatten(root.right);
+            flatten(root.left);
+            root.right=pre;
+            root.left=null;
+            pre=root;
+        }
+    }
+    
+}
