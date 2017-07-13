@@ -1,0 +1,55 @@
+public class Solution {
+    public int thirdMax(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        
+        if (nums.length == 2) {
+            return nums[0] > nums[1] ? nums[0] : nums[1];
+        }
+
+        int first = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+        int third = Integer.MIN_VALUE;
+        
+        boolean firstWrite = false;
+        boolean secondWrite = false;
+        boolean thirdWrite = false;
+        
+        for (int n : nums) {
+            if (n < first) {
+                if (n > second) {
+                    third = second;
+                    second = n;
+                    if(secondWrite) {
+                         thirdWrite=true;
+                    }
+                    secondWrite=true;
+                } else if (((n==Integer.MIN_VALUE && !secondWrite) || n!=second) && n >= third) {
+                    third = n;
+                    thirdWrite=true;
+                }
+            } else if((n==Integer.MIN_VALUE&&!firstWrite) || n>first){
+                third = second;
+                second = first;
+                first = n;
+                
+                if(secondWrite) {
+                    thirdWrite=true;
+                }
+                
+                if(firstWrite) {
+                    secondWrite=true;
+                }
+                
+                firstWrite=true;
+            }
+        }
+        
+        
+        if(!secondWrite || !thirdWrite) {
+                return first;
+        }
+        return third;
+    }
+}
