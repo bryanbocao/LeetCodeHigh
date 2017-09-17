@@ -1,0 +1,42 @@
+   public boolean validPalindrome(String s) {
+        if(s==null || s.isEmpty()) return true;
+        char[] schar = s.toCharArray();
+        int start=0;
+        int end=s.length()-1;
+        int failMatch=0;
+        boolean result=true;
+        while(start<=end) {
+            if(schar[start]!=schar[end] && failMatch==1) {
+               result = false;
+               break;
+            } else if(schar[start]==schar[end]){
+                start++;
+                end--;
+            } else if(start+1<=end && schar[start+1]==schar[end]){
+                start++;
+                failMatch++;
+            }  else {
+                result = false;
+                break;
+            }
+        }
+        if(result) return result;
+        
+         start=0;
+         end=s.length()-1;
+         failMatch=0;
+        while(start<=end) {
+            if(schar[start]!=schar[end] && failMatch==1) {
+               return false;
+            } else if(schar[start]==schar[end]){
+                start++;
+                end--;
+            } else if (end-1>=start && schar[start]==schar[end-1]) {
+                end--;
+                failMatch++;
+            }  else {
+                return false;
+            }
+        }
+        return true;
+    }
